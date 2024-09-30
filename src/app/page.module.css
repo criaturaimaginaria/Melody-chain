@@ -183,6 +183,24 @@
 }
 
 
+/* Estilo base para las clases */
+.sol, .sol2, .do, .Fa {
+  display: flex;
+  height: min(4vw, 4em);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Asegura que no haya overflow */
+}
+
+.sol img, .sol2 img, .do img, .Fa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 100%; /* Restringe el tamaño máximo */
+  max-width: 100%; /* Restringe el tamaño máximo */
+}
+
+
 
 
 
