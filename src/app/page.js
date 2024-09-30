@@ -7,7 +7,7 @@ import { ref, set, push, get } from 'firebase/database';
 import { onValue } from 'firebase/database';
 import tracks from './tracks';
 import styles from './page.module.css'
-import { Button } from '@builder.io/react';
+
 
 
 export default function Home() {
@@ -35,11 +35,6 @@ export default function Home() {
   const [previousChains, setPreviousChains] = useState([]);
   const [selectedChain, setSelectedChain] = useState(null);
   const [selectedBlocks, setSelectedBlocks] = useState([]);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-
 
   useEffect(() => {
     const blocksRef = ref(database, 'blocks');
