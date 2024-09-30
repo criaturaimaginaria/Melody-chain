@@ -183,23 +183,6 @@
 }
 
 
-/* Estilo base para las clases */
-.sol, .sol2, .do, .Fa {
-  display: flex;
-  height: min(4vw, 4em);
-  width: min(11vw, 11em);
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Asegura que no haya overflow */
-}
-
-.sol img, .sol2 img, .do img, .Fa img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  max-height: 100%; /* Restringe el tamaño máximo */
-  max-width: 100%; /* Restringe el tamaño máximo */
-}
 
 
 
@@ -681,7 +664,7 @@ opacity: 0.8;
 
 /* ///////////////Phone//////////////// */
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 1150px) {
 
   .header{
     font-family: DJRDeckRegular;
@@ -763,7 +746,7 @@ opacity: 0.8;
 }
 
 .clefLine{
-  width: min(0.6vw, 0.6em);
+  width: min(0.7vw, 0.7em);
   margin-left: -0.4em;
   height:100%;
   margin-top:auto;
@@ -806,7 +789,22 @@ opacity: 0.8;
 }
 
 
+.sol, .sol2, .do, .Fa {
+  display: flex;
+  height: min(4vw, 4em);
+  width: min(11vw, 11em);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+}
 
+.sol img, .sol2 img, .do img, .Fa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 100%; 
+  max-width: 100%; 
+}
 
 .tracksContainer {
   margin-top:min(0vw , 0em);
@@ -1115,6 +1113,17 @@ opacity: 0.8;
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
