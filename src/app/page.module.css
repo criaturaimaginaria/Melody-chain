@@ -187,8 +187,7 @@
 .sol, .sol2, .do, .Fa {
   display: flex;
   height: min(4vw, 4em);
-  width: min(6vw, 6em);
-  width: 100%;
+  width: min(11vw, 11em);
   align-items: center;
   justify-content: center;
   overflow: hidden; /* Asegura que no haya overflow */
