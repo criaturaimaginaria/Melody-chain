@@ -516,6 +516,16 @@ export default function Home() {
         <div className={styles.header}>
           <h1>Melody <span>₿lock</span>chain</h1>
         </div>
+
+        <div className={styles.introText}>
+          <p><span>₿</span>ueno, ₿itcoin es un gran proyecto. Esta es una obra interactiva y colectiva, si bien
+          yo compuse la música, el orden de sus fragmentos lo decidirán las personas que participen de forma
+          descentralziada, de esta forma, por mas que yo haya sido el compositor, la obra nunca saldrá igual 2 veces
+          gracias a la intervención de los oyentes, que no serán simplemente espectadores pasivos, sino que formarán 
+          parte en la construcción de la obra. (bueno, la probabilidad está, pero es humanamente poco probable) 
+          </p>
+        </div>
+
         {/* <h2>Sección 1: Elige tus pistas</h2> */}
         <div className={styles.sectionOne}>
           <h2>1- Fragments</h2>

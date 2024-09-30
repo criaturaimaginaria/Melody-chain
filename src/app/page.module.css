@@ -58,6 +58,34 @@
 
 
 
+.introText {
+  font-family: DJRDeckRegular;
+  letter-spacing: min(0.3vw, 0.3em);
+  font-size: 1em;
+  font-size: min(1vw, 1em);
+  color: #fff200;
+  background: rgb(148, 255, 26);
+  background: radial-gradient(circle, rgba(242, 169, 0, 1) 22%, rgba(242, 169, 0, 0.5970763305322129) 64%, rgba(242, 169, 0, 0) 100%);
+  color: #fff;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  padding: min(1vw, 1em);
+}
+
+.introText span {
+  font-size: min(4vw, 4em);
+  font-family: DJRDeckRegular;
+  letter-spacing: min(0.2vw, 0.2em);
+
+  float: left; 
+  margin-right: 0.1em; 
+  line-height: 1; 
+}
+
+
+
 
 /* ---------------------Section one------------------------- */
 
@@ -872,7 +900,16 @@ opacity: 0.8;
 
 
 
-
+  .introText {
+    letter-spacing: min(0.3vw, 0.3em);
+    font-size: min(2.8vw, 2.8em);
+  }
+  
+  .introText span {
+    font-size: min(8vw, 8em);
+    letter-spacing: min(0.2vw, 0.2em);
+  }
+  
 
 
 
@@ -1351,6 +1388,15 @@ opacity: 0.8;
 
 /* //////////////////////monitores superiores a 1700px//////////////////// */
 @media (min-width: 1700px) {
+
+  .introText {
+    width: 100%;
+  }
+
+  .introText p{
+    width: 88em;
+  }
+
 
 /* ---------------------Section one------------------------- */
 
