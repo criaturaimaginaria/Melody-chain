@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+/* fonts */
+
+@font-face {
+  font-family: NoeDisplayRegular;
+  src: url(./fonts/NoeDisplay-Regular.otf);
+}
+@font-face {
+  font-family: DJRDeck;
+  src: url(./fonts/FormaDJRBanner-Regular-Testing.ttf);
+}
+  
+@font-face {
+  font-family: DJRDeckLight;
+  src: url(./fonts/FormaDJRBanner-Light-Testing.ttf);
+}
+
+
+@font-face {
+  font-family: DJRDeckRegular;
+  src: url(./fonts/FormaDJRText-Regular-Testing.ttf);
+}
+@font-face {
+  font-family: DJRDeckBold;
+  src: url(./fonts/FormaDJRDeck-Bold-Testing.ttf);
+}
+
+@font-face {
+  font-family: DJRDeckMedium;
+  src: url(./fonts/FormaDJRDeck-Medium-Testing.ttf);
+}
+
+@font-face {
+  font-family: AvenirLightOblique;
+  src: url(./fonts/avenir-lt-35-light-oblique.ttf);
+}
+
+@font-face {
+  font-family: AvenirLight;
+  src: url(./fonts/avenir-lt-35-light.ttf);
+}
+
+
+@font-face {
+  font-family: AvenirMediumOblique;
+  src: url(./fonts/avenir-lt-std-65-medium-oblique.otf);
+}
