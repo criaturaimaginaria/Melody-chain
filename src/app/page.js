@@ -7,6 +7,7 @@ import { ref, set, push, get } from 'firebase/database';
 import { onValue } from 'firebase/database';
 import tracks from './tracks';
 import styles from './page.module.css'
+import { Button } from '@builder.io/react';
 
 
 export default function Home() {
@@ -31,7 +32,13 @@ export default function Home() {
   const [chainStarted, setChainStarted] = useState(false); 
   const [gridClass, setGridClass] = useState("tracksContainer"); 
 
+  const [previousChains, setPreviousChains] = useState([]);
+  const [selectedChain, setSelectedChain] = useState(null);
+  const [selectedBlocks, setSelectedBlocks] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
 
   useEffect(() => {
@@ -44,6 +51,8 @@ export default function Home() {
         setBlocks(loadedBlocks);
       }
     });
+
+    
 
 
 
@@ -58,6 +67,18 @@ export default function Home() {
     });
       setMounted(true)
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const chainsRef = ref(database, 'previousChains');
+    
+    onValue(chainsRef, (snapshot) => {
+      const chainsData = snapshot.val();
+      if (chainsData) {
+        const loadedChains = Object.keys(chainsData); // Obtener las claves de las cadenas
+        setPreviousChains(loadedChains); // Guardar las opciones en el estado
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -87,7 +108,6 @@ export default function Home() {
 
   useEffect(() => {
     let dbBlocks = blocks?.length - 1
-console.log("dbBlocks", dbBlocks)
 
     if (dbBlocks == 1 ) { 
       setTrackOffset(16);
@@ -251,7 +271,7 @@ console.log("dbBlocks", dbBlocks)
 
   const createBlock = async() => {
     const chainStartedRef = ref(database, 'chainStarted');
-    // setBlockMined(true)
+    setBlockMined(true)
     set(chainStartedRef, true); // Establece 'chainStarted' en true
     
     if (selectedTracks.length > 0) {
@@ -436,8 +456,58 @@ console.log("dbBlocks", dbBlocks)
     setPlayingBlock(block);
   };
   
+  
+  const handleBackupAndDeleteBlocks = async () => {
+    try {
+      const blocksRef = ref(database, 'blocks'); 
+      const previousChainsRef = ref(database, 'previousChains'); 
+      const gameStateRef = ref(database, 'gameState'); 
+      const chainStartedRef = ref(database, 'chainStarted'); 
+  
+      const snapshot = await get(blocksRef);
+      const blocksData = snapshot.val();
+  
+      if (blocksData) {
+        const newChainRef = push(previousChainsRef);
+        await set(newChainRef, { id: newChainRef.key, blocks: blocksData });
+        await set(blocksRef, null);
+        await set(gameStateRef, null);
+        await set(chainStartedRef, null);
+  
+        setBlocks([{ tracks: [tracks[0]], name: 'Bloque Génesis' }]);
 
+      } else {
+        console.log("No hay bloques para respaldar.");
+      }
+      setBlocks([{ tracks: [tracks[0]], name: 'Bloque Génesis' }]);
+      setVisibleTracks(16)
+      setTrackOffset(16)
+      setGridClass("tracksContainer")
 
+    setTimeout(() => {
+      window.location.reload();
+    }, 2500); 
+
+    } catch (error) {
+      console.error("Error al respaldar y eliminar bloques y gameState:", error);
+    }
+  };
+
+  const handleChainSelection = (event) => {
+    const selectedChainName = event.target.value;
+    setSelectedChain(selectedChainName);
+    
+    const blocksRef = ref(database, `previousChains/${selectedChainName}/blocks`);
+    onValue(blocksRef, (snapshot) => {
+      const blocksData = snapshot.val();
+      if (blocksData) {
+        setSelectedBlocks(Object.values(blocksData)); 
+      } else {
+        setSelectedBlocks([]); 
+      }
+    });
+  };
+  
 
   return (
     <div className={styles.homeContainer}>
@@ -471,9 +541,6 @@ console.log("dbBlocks", dbBlocks)
                       className={styles.trackItem}
                       key={track.id}
                       style={{
-                        // 1F9EC9
-                        // 5FBDD6
-                        // 07010F
                         backgroundColor: playingTrack === track.id ? '#fff' : 'transparent',
                         opacity: isGroupDisabled ? 0.35 : 1,
                       }}
@@ -518,15 +585,22 @@ console.log("dbBlocks", dbBlocks)
               </div>
 
               <div className={styles.mempoolButtons}>
-                  <input
+                  <input 
                     type="text"
                     placeholder="Name the block"
                     value={blockName}
                     onChange={(e) => setBlockName(e.target.value)}
+                    opacity= {blocks.length+1 >= 20 ? '0.3' : '0.1'}
                   />
-                  <button id={styles.confirmBlock} onClick={createBlock} disabled={blocks.length >= 20 || blockMined == true}>Confirmar bloque</button>
+                  <button  id={blockMined ? styles.confirmBlockConfirmed : styles.confirmBlock} onClick={createBlock} disabled={blocks.length >= 20 || blockMined == true}                     
+                  style={{
+                      // opacity: blockMined == true ? '0.3' : '1',
+                      // opacity: blockMined == true ? '0.3' : '1',
+                      // opacity: blocks.length+1 >= 20 ? '0.3' : '1',
+                      // cursor: isHovered  ? 'auto' : 'pointer',
+                    }}>Confirmar bloque</button>
                   {/* <button onClick={() => previewBlock({ tracks: selectedTracks })}>Escuchar bloque</button> */}
-                  <button onClick={() => previewBlockSection2({ tracks: selectedTracks })}>Escuchar bloque</button>
+                  <button onClick={() => previewBlockSection2({ tracks: selectedTracks })} >Escuchar bloque</button>
 
                   <button onClick={stopAllSounds}>Detener bloque</button>
               </div>
@@ -548,6 +622,13 @@ console.log("dbBlocks", dbBlocks)
             )}
         </h3>
         <h4>{halvingMessage}</h4>
+          {blocks?.length < 20 ? (
+                <></>
+              ) : (
+                <div className={styles.RestartChainButton}>
+                    <button onClick={handleBackupAndDeleteBlocks}>Create a new Melody ₿hain</button>
+                </div>
+              )}
       </div>
 
 
@@ -579,6 +660,53 @@ console.log("dbBlocks", dbBlocks)
 
 
     </div>
+
+        <div className={styles.sectionFour}>
+
+          <h2>Previous Chains</h2>
+
+          <div className={styles.ChainSelector}>
+            <label htmlFor="chainSelector">Select a chain:</label>
+            <select id="chainSelector" onChange={handleChainSelection} value={selectedChain || ''}>
+              <option value="" disabled>Select chain</option>
+              {previousChains.map((chainName, key) => (
+                <option key={chainName} value={chainName}>
+                  chain {key +1}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
+          <div className={styles.melodyChainContainer2} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            {selectedBlocks.map((block, index) => (
+              <div
+                key={index}
+                className={styles.block}
+                style={{
+                  backgroundColor: playingBlock === block ? '#31cd19' : '#006edc',
+                  color: playingBlock === block ? '#fff' : '#fff',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <span>Bloque {index + 1}</span>
+                <p>{block.name}</p>
+                <button onClick={() => playBlocksSequentially([block])}>Reproducir bloque</button>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.buttonsContainer2}>
+            <button id={styles.chainButton1} onClick={() => playBlocksSequentiallyWithEvents(selectedBlocks)}>Play chain</button>
+            <button id={styles.chainButton2} onClick={stopAllSounds}>Stop chain</button> 
+          </div>
+
+
+          </div>
+
 
       </div>
     </div>

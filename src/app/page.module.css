@@ -5,6 +5,16 @@
   padding-bottom: min(2vw, 2em);
 }
 
+.seecolors{
+  background-color: #becd19;
+  background-color: #f29b30;
+  background-color: #31cd19;
+  background-color: #1f8bc9;
+  background-color: #006edc;
+  background-color: #c423ff; 
+  cursor:auto;
+}
+
 .home{
   display: flex;
   
@@ -479,6 +489,8 @@
   cursor: not-allowed; 
 }
 
+
+
 #confirmBlock {
   background-color: #c423ff; 
   color: white; 
@@ -493,6 +505,18 @@
 #confirmBlock:hover {
   opacity: 0.8;
 }
+
+#confirmBlockConfirmed {
+  opacity: 0.3;
+  background-color: #c423ff; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  padding: 0.5em 1em; 
+  font-size: 1em; 
+  cursor: auto; 
+}
+
 
 
 
@@ -547,6 +571,53 @@
   font-family: DJRDeckBold;
   /* margin-top: min(0.5vw, 0.5em); */
 }
+
+
+.RestartChainButton{
+  display:flex;
+  justify-content:center;
+}
+
+
+.RestartChainButton button{
+  margin-left: auto;
+  margin-right: auto;
+  font-size:min(2vw, 2em);
+  font-family: DJRDeckRegular;
+  font-family: DJRDeckBold;
+  text-decoration: none;
+  /* border: 1px solid #fff; */
+  border: none;
+  border-radius: min(0.4vw, 0.4em);
+  cursor: pointer; 
+  color:#fff;
+  background-color: rgb(216, 27, 96);
+  margin:1px;
+  transition:  0.3s ease-in-out;
+
+}
+
+.RestartChainButton button:hover{
+  margin-left: auto;
+  margin-right: auto;
+  font-family: DJRDeckRegular;
+  font-family: DJRDeckBold;
+  text-decoration: none;
+  /* border: 1px solid #fff; */
+  border: none;
+  border-radius: min(0.4vw, 0.4em);
+  cursor: pointer; 
+  color:#fff;
+  background-color: rgb(216, 27, 96);
+  margin:1px;
+  /* transition:  0.1s ease-in-out; */
+
+  transform: scale(1.1);
+  letter-spacing: 2px;
+  background: transparent;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.216);
+}
+
 
 
 
@@ -662,6 +733,123 @@
 #chainButton2:hover {
 opacity: 0.8;
 }
+
+
+/* /---------------------section Four ----------------/ */
+
+
+.sectionFour{
+  display:flex;
+  /* justify-content:center; */
+  /* align-items:center; */
+  flex-direction:column;
+  margin-bottom: min(1.5vw, 1.5em);
+  padding-bottom: min(2vw, 2em);
+
+}
+
+.sectionFour h2{
+  font-family: DJRDeckBold;
+  letter-spacing:min(0.1vw, 0.1em);
+  width:85%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  text-decoration: underline; 
+  margin-top: min(0.5vw, 0.5em);
+}
+
+
+.ChainSelector{
+  font-family: DJRDeckRegular;
+  color: #fff;
+  width:85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: min(0.5vw, 0.5em);
+}
+
+.ChainSelector label {
+  font-size: min(1.2vw, 1.2em);
+  margin-bottom: 5px;
+}
+
+
+
+.ChainSelector select {
+  font-size: min(1.2vw, 1.2em);
+  border: 2px solid #F2B830;
+  border-radius: 5px;
+  background-color: #fff;
+  /* appearance: none; */
+  /* outline: none; */
+  transition: border-color 0.3s ease;
+  /* width: 100%; */
+  padding:min(0.3vw, 0.3em);
+  margin-left:min(0.8vw, 0.8em);
+}
+
+
+.ChainSelector select option {
+  padding: 10px;
+}
+
+
+.ChainSelector select option:hover {
+  background-color: #ffb710;
+}
+
+
+
+
+
+
+
+.buttonsContainer2{
+  width:96%;
+  margin-top: min(2vw, 2em);
+  margin-left:auto;
+  margin-right: auto;
+}
+
+
+
+.melodyChainContainer2{
+  width:96%;
+  margin-top: min(2vw, 2em);
+  margin-left:auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ///////////////Phone//////////////// */
@@ -982,16 +1170,16 @@ opacity: 0.8;
   font-size: min(3.5vw, 3.5em);
 }
 
+#confirmBlockConfirmed {
+  background-color: #c423ff; 
+  border-radius: 4px; 
+  padding: 0.5em 1em; 
+  font-size: min(3.5vw, 3.5em);
+}
+
 
 
 /* ----------------------------------------------------- */
-
-
-
-
-
-
-
 
 
 
@@ -1035,7 +1223,23 @@ opacity: 0.8;
   font-size: min(3.5vw, 3.5em);
 }
 
+.RestartChainButton button{
+  margin-left: auto;
+  margin-right: auto;
+  font-size:min(4vw, 4em);
+  font-family: DJRDeckRegular;
+  font-family: DJRDeckBold;
+  text-decoration: none;
+  /* border: 1px solid #fff; */
+  border: none;
+  border-radius: min(0.4vw, 0.4em);
+  cursor: pointer; 
+  color:#fff;
+  background-color: rgb(216, 27, 96);
+  margin:1px;
+  transition:  0.3s ease-in-out;
 
+}
 
 
 
@@ -1107,6 +1311,38 @@ opacity: 0.8;
   }
 
 
+
+  /* --------------------------Section four----------------------------- */
+
+
+
+.sectionFour{
+  flex-direction:column;
+  margin-bottom: min(1.5vw, 1.5em);
+  padding-bottom: min(2vw, 2em);
+  border-bottom: 1px solid #fff;
+}
+
+.sectionFour h2{
+  font-size: min(4vw, 4em);
+  letter-spacing:min(0.1vw, 0.1em);
+  width:85%;
+  text-decoration: underline; 
+  margin-top: min(0.5vw, 0.5em);
+}
+
+.ChainSelector label {
+  font-size: min(2vw, 2em);
+}
+
+
+
+.ChainSelector select {
+  font-size: min(2vw, 2em);
+}
+
+
+
 }
 
 
@@ -1167,6 +1403,36 @@ opacity: 0.8;
     margin-left:auto;
     margin-right: auto;
   }
+
+
+      /* ----------------------------Section four------------------------------------ */
+
+
+      .sectionFour h2{
+        width:60em;
+      }
+    
+    
+      .ChainSelector{
+        width:90em;
+        color: #fff;
+      }
+    
+    
+      .melodyChainContainer2{
+        width:96em;
+        margin-top: min(2vw, 2em);
+        margin-left:auto;
+        margin-right: auto;
+      }
+    
+    
+      .buttonsContainer2{
+        width:96em;
+        margin-top: min(2vw, 2em);
+        margin-left:auto;
+        margin-right: auto;
+      }
 
 
 }
