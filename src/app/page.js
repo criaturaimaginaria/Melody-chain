@@ -444,7 +444,7 @@ console.log("dbBlocks", dbBlocks)
       <div className={styles.home}>
 
         <div className={styles.header}>
-          <h1>Melody <text>₿lock</text>chain</h1>
+          <h1>Melody <span>₿lock</span>chain</h1>
         </div>
         {/* <h2>Sección 1: Elige tus pistas</h2> */}
         <div className={styles.sectionOne}>
@@ -474,14 +474,17 @@ console.log("dbBlocks", dbBlocks)
                         // 1F9EC9
                         // 5FBDD6
                         // 07010F
-                        backgroundColor: playingTrack === track.id ? '#1F9EC9' : 'transparent',
+                        backgroundColor: playingTrack === track.id ? '#fff' : 'transparent',
                         opacity: isGroupDisabled ? 0.35 : 1,
                       }}
                     >
-                      <p>{track.name}</p>
+                      <p style={{
+                        color: playingTrack === track.id ? 'black' : '#fff',
+                      }}>{track.name}</p>
                       <button className={styles.button} onClick={() => playTrackSection1(track)} disabled={isGroupDisabled}>Play</button>
                       <button className={styles.button} onClick={stopAllSounds}>Stop</button>   
-                      <button className={styles.buttonSelect} onClick={() => handleTrackSelection(track)} disabled={isGroupDisabled || blocks.length >= 20 || blockMined == true}>
+                      <button className={styles.buttonSelect} 
+                      onClick={() => handleTrackSelection(track)} disabled={isGroupDisabled || blocks.length >= 20 || blockMined == true}>
                         Select
                       </button>
                     </div>
@@ -562,7 +565,7 @@ console.log("dbBlocks", dbBlocks)
               alignItems: 'center',
             }}
           >
-            <text>Bloque {index + 1}</text>
+            <span>Bloque {index + 1}</span>
             <p>{block.name}</p>
             <button onClick={() => playBlocksSequentially([block])}>Reproducir bloque</button>
           </div>

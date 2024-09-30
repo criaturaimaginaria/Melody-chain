@@ -1,5 +1,4 @@
 .homeContainer {
-  background-color: rgb(222, 239, 255);
   height:100vh;
   display: flex;
   justify-content:center;
@@ -13,6 +12,7 @@
   width: 98%;
   height: fit-content;
   background-color: #F2B830;
+  /* background-color: #f2a430; */
   padding:0em 1em 1em 1em;
   border-radius: 2em 2em 0em 0em;
   margin-top: min(1vw, 1em);
@@ -38,7 +38,7 @@
   justify-content: center;
   padding: min(1vw, 1em);
 }
-.header text{
+.header span{
   /* font-size: 0.25em; */
   font-size: min(0.7vw, 0.7em);
   font-family: DJRDeckRegular;
@@ -229,18 +229,20 @@
 
 
 .trackItem{
-  border-radius: min(0.2vw, 0.2em);
+  position: relative;
   padding-left: min(0.2vw, 0.2em);
   color:#fff;
   font-family: DJRDeckRegular;
-  /* border: 2px solid red; */
-  border-right: 1px solid #4343436c;
-  border-bottom: 1px solid #4343436c;
+  border-bottom: 1px solid #4343436c; 
+  background-color: #f2b11993;
+  background-color: #ffb300;
+  
   width: min(15vw, 15em);
-  height: min(4vw, 4em);
-  margin:2px;
+  height: min(4.1vw, 4.1em);
+
   transition:  0.2s ease-in-out;
 }
+
 
 .button{
   font-family: DJRDeckRegular;
@@ -569,7 +571,7 @@
   /* gap:min(0.4vw, 0.4em); */
 }
 
-.block text{
+.block span{
   /* background-color: #3af31d;  */
   align-self: center;
   font-size: min(1.2vw, 1.2em);
@@ -673,7 +675,7 @@ opacity: 0.8;
     width:100%;
     padding: min(1vw, 1em);
   }
-  .header text{
+  .header span{
     /* font-size: 0.25em; */
     font-size: min(2vw, 2em);
     letter-spacing:min(0.3vw, 0.3em);
@@ -1048,7 +1050,7 @@ opacity: 0.8;
     height: min(18vw, 18em);
   }
 
-  .block text{
+  .block span{
     font-size: min(2.2vw, 2.2em);
     letter-spacing:min(0.15vw, 0.15em);
 
@@ -1111,24 +1113,66 @@ opacity: 0.8;
 
 
 
+/* //////////////////////monitores superiores a 1700px//////////////////// */
+@media (min-width: 1700px) {
+
+/* ---------------------Section one------------------------- */
 
 
+  .sectionOne h2{
+    width:60em;
+  }
 
 
+  .clefssAndTracks{
+    width:85em;
+  }
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-
-
-
-
+  /* ----------------------------Section Two------------------------------------ */
 
 
+  .sectionTwo h2{
+    width:60em;
+  }
+
+  .mempoolContainer{
+    width:85em;
+  }
+
+    /* ----------------------------Section three------------------------------------ */
 
 
+  .sectionThree h2{
+    width:60em;
+  }
 
 
+  .halvingCountdown{
+    width:90em;
+
+  }
+
+
+  .melodyChainContainer{
+    width:96em;
+    margin-top: min(2vw, 2em);
+    margin-left:auto;
+    margin-right: auto;
+  }
+
+
+  .buttonsContainer{
+    width:96em;
+    margin-top: min(2vw, 2em);
+    margin-left:auto;
+    margin-right: auto;
+  }
 
 
 }
+
+
+
+
+
 
