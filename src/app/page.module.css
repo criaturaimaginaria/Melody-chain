@@ -664,7 +664,7 @@ opacity: 0.8;
 
 /* ///////////////Phone//////////////// */
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1200px) {
 
   .header{
     font-family: DJRDeckRegular;
@@ -747,7 +747,7 @@ opacity: 0.8;
 
 .clefLine{
   width: min(0.7vw, 0.7em);
-  margin-left: -0.4em;
+  margin-left: -0.6em;
   height:100%;
   margin-top:auto;
   margin-bottom:auto;
@@ -790,8 +790,9 @@ opacity: 0.8;
 
 
 .sol, .sol2, .do, .Fa {
+  /* margin-left: min(4vw, 4em); */
   display: flex;
-  height: min(4vw, 4em);
+  height: min(11vw, 11em);
   width: min(11vw, 11em);
   align-items: center;
   justify-content: center;
@@ -805,6 +806,8 @@ opacity: 0.8;
   max-height: 100%; 
   max-width: 100%; 
 }
+
+
 
 .tracksContainer {
   margin-top:min(0vw , 0em);
