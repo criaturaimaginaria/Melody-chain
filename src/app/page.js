@@ -324,7 +324,7 @@ export default function Home() {
 
     if ((blocks.length - 1 + 1) % 4 === 0) { 
       setVisibleTracks(prev => Math.ceil(prev / 2));
-      setHalvingMessage("Primer bloque de halving :D");
+      setHalvingMessage("Primer bloque del halving :D");
     }
 
 
@@ -636,7 +636,7 @@ export default function Home() {
                  {(Math.ceil(blocks?.length / 4) * 4 - blocks?.length) +1 } bloques para el próximo halving
               </p>
             ) : (
-              <p>Ya se ha minado toda la música, melody chain ha finalizado.</p>
+              <p>Ya se ha minado toda la música! :D</p>
             )}
         </h3>
         <h4>{halvingMessage}</h4>
