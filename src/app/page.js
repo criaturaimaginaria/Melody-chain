@@ -488,7 +488,7 @@ export default function Home() {
       setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
       setVisibleTracks(16)
       setTrackOffset(16)
-      setGridClass("tracksContainer")
+      // setGridClass("tracksContainer")
 
     setTimeout(() => {
       window.location.reload();
