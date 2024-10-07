@@ -106,8 +106,6 @@ export default function Home() {
   useEffect(() => {
     let dbBlocks = blocks?.length - 1
 
-    console.log("dbBlocks", dbBlocks)
-
     if (dbBlocks == 1 ) { 
       setTrackOffset(16);
       setVisibleTracks(16)
@@ -552,7 +550,7 @@ export default function Home() {
               <div className={gridClass == "tckCont5" ? styles.clefNone : styles.Fa}><img src='./images/fa.png'></img> </div>
             </div>
 
-              <div className={styles[(blocks) && (gridLoader == true) ? gridClass : "tracksContainer"]}>
+              <div className={styles[gridLoader == true ? gridClass : "tracksContainer"]}>
               {mounted == true ? 
               <>
                 {tracks.slice(trackOffset, trackOffset + visibleTracks).map((track) => {
