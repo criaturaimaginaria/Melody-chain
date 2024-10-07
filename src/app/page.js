@@ -79,6 +79,9 @@ export default function Home() {
     });
   }, []);
 
+
+
+  console.log("free gridClass", gridClass)
   useEffect(() => {
     const gameStateRef = ref(database, 'gameState');
     const chainStartedRef = ref(database, 'chainStarted');
@@ -90,6 +93,7 @@ export default function Home() {
       if (gridClassData !== null) {
         setGridClass(gridClassData); 
       }
+      console.log("gridClassData", gridClassData)
     });
 
     onValue(chainStartedRef, (snapshot) => {
@@ -293,6 +297,7 @@ export default function Home() {
     // setBlockMined(false)
     set(chainStartedRef, true); 
     set(gridClassRef, gridClass); 
+    console.log("gridClass crt block", gridClass)
     
     if (selectedTracks.length > 0) {
       const blocksRef = ref(database, 'blocks');
@@ -319,11 +324,13 @@ export default function Home() {
       push(blocksRef, newBlock);
       
 
-      if ((blocks.length + 1) <= 5 ) { 
+console.log("blocks.length + 1", blocks.length + 1)
+
+      if ((blocks.length + 1) <= 4 ) { 
         setTrackOffset(prevOffset => prevOffset + 16);
         setVisibleTracks(16)
       }
-      if ((blocks.length + 1) <= 9 && (blocks.length + 1)  >= 6) { 
+      if ((blocks.length + 1) <= 9 && (blocks.length + 1)  >= 5) { 
         setTrackOffset(prevOffset => prevOffset + 8);
         setVisibleTracks(8)
       }
@@ -614,7 +621,7 @@ export default function Home() {
                       marginRight:'auto',
                       position: 'relative',
                       color: '#fff',
-                    }}>{blockMined == true ? "Refresca la página para minar más bloques :) " : "" }</p>
+                    }}>{blockMined == true && blocks?.length < 20 ? "Refresca la página para minar más bloques :) " : "" }</p>
           <h2>2- Mempool </h2> 
             <div className={styles.mempoolContainer}>
               <div className={styles.mempoolBox}>
