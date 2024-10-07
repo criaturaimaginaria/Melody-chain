@@ -132,8 +132,8 @@ export default function Home() {
     }
     if (dbBlocks === 3) { 
       setTrackOffset(48);
-      setVisibleTracks(16)
-      setGridClass("tracksContainer")
+      setVisibleTracks(8)
+      setGridClass("tracksContainer2")
     }
     if (dbBlocks === 4) { 
       setTrackOffset(56);
@@ -223,11 +223,16 @@ export default function Home() {
   }, [blocks]);
 
   useEffect(() => {
-    const gridClassRef= ref(database, 'gridClass');
+//     const gridClassRef= ref(database, 'gridClass');
 
-    set(gridClassRef, gridClass); 
+   
 
-  }, [gridLoader]);
+
+//  set(gridClassRef, gridClass); 
+
+
+
+  }, []);
 
   
 
@@ -250,6 +255,10 @@ export default function Home() {
   
 
   const handleTrackSelection = (track) => {
+    const gridClassRef= ref(database, 'gridClass');
+    set(gridClassRef, gridClass); 
+
+
     if (selectedTracks.length < 4) {
       const newSelectedTracks = [...selectedTracks, track];
       setSelectedTracks(newSelectedTracks);
@@ -334,25 +343,31 @@ console.log("actual grid class", gridClass)
       push(blocksRef, newBlock);
       
 
-console.log("blocks.length + 1", blocks.length + 1)
+console.log("blocks.length + 1", blocks.length - 1)
 
-      if ((blocks.length + 1) <= 4 ) { 
+
+
+
+
+
+
+      if ((blocks.length - 1) <= 3 ) { 
         setTrackOffset(prevOffset => prevOffset + 16);
         setVisibleTracks(16)
       }
-      if ((blocks.length + 1) <= 9 && (blocks.length + 1)  >= 5) { 
+      if ((blocks.length - 1) <= 8 && (blocks.length + 1)  >= 4) { 
         setTrackOffset(prevOffset => prevOffset + 8);
         setVisibleTracks(8)
       }
-      if ((blocks.length + 1) <= 13 && (blocks.length + 1)  >= 10) { 
+      if ((blocks.length - 1) <= 12 && (blocks.length + 1)  >= 9) { 
         setTrackOffset(prevOffset => prevOffset + 4);
         setVisibleTracks(4)
       }
-      if ((blocks.length + 1) <= 17 && (blocks.length + 1)  >= 14) { 
+      if ((blocks.length - 1) <= 16 && (blocks.length + 1)  >= 13) { 
         setTrackOffset(prevOffset => prevOffset + 2);
         setVisibleTracks(2)
       }
-      if ((blocks.length + 1)  >= 18) { 
+      if ((blocks.length - 1)  >= 17) { 
         setTrackOffset(prevOffset => prevOffset + 1 );
         setVisibleTracks(1)
         // setTrackOffset(0);
