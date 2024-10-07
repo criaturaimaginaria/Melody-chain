@@ -120,97 +120,97 @@ export default function Home() {
 
     console.log("dbBlocks", dbBlocks)
 
-    if (dbBlocks == 1 ) { 
+    if (dbBlocks === 1 ) { 
       setTrackOffset(16);
       setVisibleTracks(16)
       setGridClass("tracksContainer")
     }
-    if (dbBlocks == 2 )  { 
+    if (dbBlocks === 2 )  { 
       setTrackOffset(32);
       setVisibleTracks(16)
       setGridClass("tracksContainer")
     }
-    if (dbBlocks == 3) { 
+    if (dbBlocks === 3) { 
       setTrackOffset(48);
       setVisibleTracks(16)
       setGridClass("tracksContainer")
     }
-    if (dbBlocks == 4) { 
+    if (dbBlocks === 4) { 
       setTrackOffset(56);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
-    if (dbBlocks == 5 ) { 
+    if (dbBlocks === 5 ) { 
       setTrackOffset(64);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
-    if (dbBlocks == 6 )  { 
+    if (dbBlocks === 6 )  { 
       setTrackOffset(72);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
-    if (dbBlocks == 7) { 
+    if (dbBlocks === 7) { 
       setTrackOffset(80);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
-    if (dbBlocks == 8) { 
+    if (dbBlocks === 8) { 
       setTrackOffset(84);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
-    if (dbBlocks == 9 ) { 
+    if (dbBlocks === 9 ) { 
       setTrackOffset(88);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
-    if (dbBlocks == 10 )  { 
+    if (dbBlocks === 10 )  { 
       setTrackOffset(92);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
-    if (dbBlocks == 11) { 
+    if (dbBlocks === 11) { 
       setTrackOffset(96);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
-    if (dbBlocks == 12) { 
+    if (dbBlocks === 12) { 
       setTrackOffset(98);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
-    if (dbBlocks == 13) { 
+    if (dbBlocks === 13) { 
       setTrackOffset(100);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
-    if (dbBlocks == 14) { 
+    if (dbBlocks === 14) { 
       setTrackOffset(102);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
-    if (dbBlocks == 15) { 
+    if (dbBlocks === 15) { 
       setTrackOffset(104);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
-    if (dbBlocks == 16) { 
+    if (dbBlocks === 16) { 
       setTrackOffset(105);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
-    if (dbBlocks == 17) { 
+    if (dbBlocks === 17) { 
       setTrackOffset(106);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
-    if (dbBlocks == 18) { 
+    if (dbBlocks === 18) { 
       setTrackOffset(107);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
-    if (dbBlocks == 19) { 
+    if (dbBlocks === 19) { 
       setTrackOffset(108);
       setVisibleTracks(1)
       setGridClass("tckCont5")
@@ -227,7 +227,7 @@ export default function Home() {
 
     set(gridClassRef, gridClass); 
 
-  }, [gridClass]);
+  }, [gridLoader]);
 
   
 
