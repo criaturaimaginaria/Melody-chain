@@ -324,7 +324,7 @@ export default function Home() {
 
     if ((blocks.length - 1 + 1) % 4 === 0) { 
       setVisibleTracks(prev => Math.ceil(prev / 2));
-      setHalvingMessage("Primer bloque del halving :D");
+      setHalvingMessage("Primer bloque del halving! :D");
     }
 
 
@@ -605,7 +605,7 @@ export default function Home() {
               <div className={styles.mempoolButtons}>
                   <input 
                     type="text"
-                    placeholder="Name the block"
+                    placeholder="Firmar bloque"
                     value={blockName}
                     onChange={(e) => setBlockName(e.target.value)}
                     opacity= {blocks.length+1 >= 20 ? '0.3' : '0.1'}
@@ -633,7 +633,7 @@ export default function Home() {
         <h3>
             {blocks?.length < 20 ? (
               <p>
-                 {(Math.ceil(blocks?.length / 4) * 4 - blocks?.length) +1 } bloques para el próximo halving
+                 {(Math.ceil(blocks?.length / 4) * 4 - blocks?.length)  } bloques para el próximo halving
               </p>
             ) : (
               <p>Ya se ha minado toda la música! :D</p>
