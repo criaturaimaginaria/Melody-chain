@@ -10,7 +10,6 @@ import genesisTrack from './genesisTrack';
 import styles from './page.module.css'
 
 
-
 export default function Home() {
   const [selectedTracks, setSelectedTracks] = useState([]);
   // const [blocks, setBlocks] = useState([]);
@@ -73,8 +72,8 @@ export default function Home() {
     onValue(chainsRef, (snapshot) => {
       const chainsData = snapshot.val();
       if (chainsData) {
-        const loadedChains = Object.keys(chainsData); // Obtener las claves de las cadenas
-        setPreviousChains(loadedChains); // Guardar las opciones en el estado
+        const loadedChains = Object.keys(chainsData); 
+        setPreviousChains(loadedChains); 
       }
     });
   }, []);
@@ -91,7 +90,7 @@ export default function Home() {
     });
 
 
-    // set(chainStartedRef, true); // Establece 'chainStarted' en true
+    // set(chainStartedRef, true);
   
     onValue(gameStateRef, (snapshot) => {
       const data = snapshot.val();
@@ -105,7 +104,7 @@ export default function Home() {
 
   useEffect(() => {
     let dbBlocks = blocks?.length - 1
-console.log(dbBlocks, "dbBlocks")
+
     if (dbBlocks == 1 ) { 
       setTrackOffset(16);
       setVisibleTracks(16)
@@ -208,18 +207,6 @@ console.log(dbBlocks, "dbBlocks")
   
 
   const getTrackGroup = (trackId) => {
-    // if (trackId <= 64) {
-    //   return Math.floor((trackId - 1) / 4); 
-    // } else if (trackId >= 65 && trackId <= 96) {
-    //   return Math.floor((trackId - 1) / 2); 
-    // } else if (trackId >= 97 && trackId <= 112) {
-    //   return Math.floor((trackId - 1) / 2); 
-    // } else if (trackId >= 113 && trackId <= 120) {
-    //   return Math.floor((trackId - 1) / 1); 
-    // } else if (trackId >= 121) {
-    //   return Math.floor((trackId - 1) / 1); 
-    // }
-    // return -1;
 
     if (trackId <= 48) {
       return Math.floor((trackId - 1) / 4); 
@@ -283,7 +270,7 @@ console.log(dbBlocks, "dbBlocks")
     const chainStartedRef = ref(database, 'chainStarted');
     // setBlockMined(true)
     setBlockMined(false)
-    set(chainStartedRef, true); // Establece 'chainStarted' en true
+    set(chainStartedRef, true); 
     
     if (selectedTracks.length > 0) {
       const blocksRef = ref(database, 'blocks');
@@ -359,7 +346,7 @@ console.log(dbBlocks, "dbBlocks")
     const howls = block.tracks.map((track) => new Howl({
       src: [track.src],
       volume: 1.0,
-      onend: () => setPlayingBlock(null), // Actualizar estado cuando termine.
+      onend: () => setPlayingBlock(null), // Actualiza estado cuando termina.
     }));
 
     howls.forEach((howl) => howl.play());
@@ -380,10 +367,7 @@ console.log(dbBlocks, "dbBlocks")
 
   const playBlocksSequentiallyWithEvents = (blocks) => {
  
-    setPlayCount(prevCount => prevCount + 1);  // Incrementar el contador y actualizar el estado
-    console.log("Function executed times:", playCount);
-
-    console.log("block ??", blocks)
+    setPlayCount(prevCount => prevCount + 1);  
     let blockIndex = 0;
     if (blocks.length === 0) return;
 
@@ -427,11 +411,10 @@ console.log(dbBlocks, "dbBlocks")
       }
     }, fadeTime);
 
-    console.log("block final next block", blocks)
     
   }
 };
-console.log("final play function", blocks)
+
     stopAllSounds();
     clearTimeout(blockTimeoutRef.current);
     playNextBlock();
@@ -500,7 +483,7 @@ console.log("final play function", blocks)
         setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
 
       } else {
-        console.log("No hay bloques para respaldar.");
+        console.log("No hay bloques");
       }
       setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
       setVisibleTracks(16)
@@ -541,11 +524,13 @@ console.log("final play function", blocks)
         </div>
 
         <div className={styles.introText}>
-          <p><span>₿</span>ueno, ₿itcoin es un gran proyecto. Esta es una obra interactiva y colectiva, si bien
-          yo compuse la música, el orden de sus fragmentos lo decidirán las personas que participen de forma
-          descentralziada, de esta forma, por mas que yo haya sido el compositor, la obra nunca saldrá igual 2 veces
-          gracias a la intervención de los oyentes, que no serán simplemente espectadores pasivos, sino que formarán 
-          parte en la construcción de la obra. (bueno, la probabilidad está, pero es humanamente poco probable) 
+          <p><span>₿</span>itcoin, brindando una mayor libertad, permitió que muchas personas se empoderaran. Por
+          eso, aunque la música suele ser un acto pasivo para el espectador, mi obra busca ofrecerle un poco más de 
+          libertad, invitándolo a participar ejerciendo su <strong><em>proof of taste</em></strong> para confrimar
+          un bloque. Esto provocará que, aunque la música de los fragmentos haya sido 
+          compuesta por mí, la armonía, el contrapunto y el encadenamiento de los paisajes sonoros propuestos sea 
+          encadenado colectivamente por aquellas personas que hayan participado. A excepción, claro, de los últimos
+          bloques, donde la música es más es escasa producto de los halvings.
           </p>
         </div>
 
@@ -738,6 +723,17 @@ console.log("final play function", blocks)
           </div>
 
 
+          </div>
+
+
+          <div className={styles.sectionFour}>
+            <div className={styles.repo}>
+              <p>
+              Código de la obra en <a href="https://github.com/criaturaimaginaria/Melody-chain" target="_blank" rel="noopener noreferrer" className={styles.githubLink}>
+                                      github
+                                   </a>
+              </p>
+            </div>
           </div>
 
 

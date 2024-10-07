@@ -84,6 +84,13 @@
   line-height: 1; 
 }
 
+.introText strong{
+  color:#c423ff;
+  /* color: #fff; */
+  font-family: DJRDeckBold;
+  /* text-decoration: underline;     */
+}
+
 
 
 
@@ -856,9 +863,24 @@ opacity: 0.8;
 
 
 
+/* -//////////footer/////////- */
 
+.repo{
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: min(4vw, 4em);
+}
 
+.githubLink {
+  color:#c423ff; 
+  text-decoration: underline; 
+  font-weight: bold; 
+}
 
+.githubLink:hover {
+  opacity: 0.8;
+}
 
 
 
