@@ -82,6 +82,15 @@ export default function Home() {
   useEffect(() => {
     const gameStateRef = ref(database, 'gameState');
     const chainStartedRef = ref(database, 'chainStarted');
+    const gridClassRef= ref(database, 'gridClass');
+
+
+    onValue(gridClassRef, (snapshot) => {
+      const gridClassData = snapshot.val();
+      if (gridClassData !== null) {
+        setGridClass(gridClassData); 
+      }
+    });
 
     onValue(chainStartedRef, (snapshot) => {
       const chainStartedData = snapshot.val();
@@ -272,9 +281,18 @@ export default function Home() {
 
   const createBlock = async() => {
     const chainStartedRef = ref(database, 'chainStarted');
+    const gridClassRef= ref(database, 'gridClass');
+
+    const Ref = ref(database, 'chainStarted');
+
+    // visibleTracks
+    // trackOffset
+    // gridClass
+
     setBlockMined(true)
     // setBlockMined(false)
     set(chainStartedRef, true); 
+    set(gridClassRef, gridClass); 
     
     if (selectedTracks.length > 0) {
       const blocksRef = ref(database, 'blocks');
@@ -552,7 +570,7 @@ export default function Home() {
               <div className={gridClass == "tckCont5" ? styles.clefNone : styles.Fa}><img src='./images/fa.png'></img> </div>
             </div>
 
-              <div className={styles[(blocks) && (gridLoader == true) ? gridClass : "tracksContainer"]}>
+              <div className={styles[gridLoader == true ? gridClass : "tracksContainer"]}>
               {mounted == true ? 
               <>
                 {tracks.slice(trackOffset, trackOffset + visibleTracks).map((track) => {
