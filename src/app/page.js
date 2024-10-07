@@ -81,7 +81,6 @@ export default function Home() {
 
 
 
-  console.log("free gridClass", gridClass)
   useEffect(() => {
     const gameStateRef = ref(database, 'gameState');
     const chainStartedRef = ref(database, 'chainStarted');
@@ -93,7 +92,6 @@ export default function Home() {
       if (gridClassData !== null) {
         setGridClass(gridClassData); 
       }
-      console.log("gridClassData", gridClassData)
     });
 
     onValue(chainStartedRef, (snapshot) => {
@@ -491,6 +489,10 @@ console.log("blocks.length + 1", blocks.length + 1)
     setPlayingBlock(block);
   };
   
+
+
+
+
   
   const handleBackupAndDeleteBlocks = async () => {
     try {
@@ -498,6 +500,7 @@ console.log("blocks.length + 1", blocks.length + 1)
       const previousChainsRef = ref(database, 'previousChains'); 
       const gameStateRef = ref(database, 'gameState'); 
       const chainStartedRef = ref(database, 'chainStarted'); 
+      const gridClassRef = ref(database, 'gridClass'); 
   
       const snapshot = await get(blocksRef);
       const blocksData = snapshot.val();
@@ -508,6 +511,7 @@ console.log("blocks.length + 1", blocks.length + 1)
         await set(blocksRef, null);
         await set(gameStateRef, null);
         await set(chainStartedRef, null);
+        await set(gridClassRef, null);
   
         setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
 
