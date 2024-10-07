@@ -31,6 +31,7 @@ export default function Home() {
   const [mounted, setMounted] = useState(false); 
   const [chainStarted, setChainStarted] = useState(false); 
   const [gridClass, setGridClass] = useState("tracksContainer"); 
+  const [gridLoader, setGridLoader] = useState(false); 
 
   const [previousChains, setPreviousChains] = useState([]);
   const [selectedChain, setSelectedChain] = useState(null);
@@ -201,6 +202,7 @@ export default function Home() {
       setGridClass("tckCont5")
     }
 
+    setGridLoader(true)
 
   }, [blocks]);
 
@@ -488,7 +490,7 @@ export default function Home() {
       setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
       setVisibleTracks(16)
       setTrackOffset(16)
-      // setGridClass("tracksContainer")
+      setGridClass("tracksContainer")
 
     setTimeout(() => {
       window.location.reload();
@@ -548,7 +550,7 @@ export default function Home() {
               <div className={gridClass == "tckCont5" ? styles.clefNone : styles.Fa}><img src='./images/fa.png'></img> </div>
             </div>
 
-              <div className={styles[gridClass]}>
+              <div className={styles[gridLoader == true ? gridClass : "tracksContainer"]}>
               {mounted == true ? 
               <>
                 {tracks.slice(trackOffset, trackOffset + visibleTracks).map((track) => {
