@@ -115,6 +115,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+
     let dbBlocks = blocks?.length - 1
 
     console.log("dbBlocks", dbBlocks)
@@ -217,7 +218,19 @@ export default function Home() {
 
     setGridLoader(true)
 
+   
+
   }, [blocks]);
+
+  useEffect(() => {
+    const gridClassRef= ref(database, 'gridClass');
+
+
+   
+
+    set(gridClassRef, gridClass); 
+
+  }, [gridClass]);
 
   
 
@@ -281,9 +294,11 @@ export default function Home() {
   
 
 
+console.log("actual grid class", gridClass)
+
   const createBlock = async() => {
     const chainStartedRef = ref(database, 'chainStarted');
-    const gridClassRef= ref(database, 'gridClass');
+    // const gridClassRef= ref(database, 'gridClass');
 
     const Ref = ref(database, 'chainStarted');
 
@@ -294,8 +309,8 @@ export default function Home() {
     setBlockMined(true)
     // setBlockMined(false)
     set(chainStartedRef, true); 
-    set(gridClassRef, gridClass); 
-    console.log("gridClass crt block", gridClass)
+    // set(gridClassRef, gridClass); 
+    // console.log(gridClassRef, "gridClass crt block", gridClass)
     
     if (selectedTracks.length > 0) {
       const blocksRef = ref(database, 'blocks');
