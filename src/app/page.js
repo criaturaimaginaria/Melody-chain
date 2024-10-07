@@ -268,8 +268,8 @@ export default function Home() {
 
   const createBlock = async() => {
     const chainStartedRef = ref(database, 'chainStarted');
-    // setBlockMined(true)
-    setBlockMined(false)
+    setBlockMined(true)
+    // setBlockMined(false)
     set(chainStartedRef, true); 
     
     if (selectedTracks.length > 0) {
@@ -586,10 +586,16 @@ export default function Home() {
 
 
       <div className={styles.sectionTwo}>
-          <h2>2- Mempool </h2>
+        <p style={{
+                      // cursor: isHovered  ? 'auto' : 'pointer',
+                      marginLeft:'auto',
+                      marginRight:'auto',
+                      position: 'relative',
+                      color: '#fff',
+                    }}>{blockMined == true ? "Refresca la página para minar más bloques :) " : "" }</p>
+          <h2>2- Mempool </h2> 
             <div className={styles.mempoolContainer}>
               <div className={styles.mempoolBox}>
-
                 <div className={styles.columnContainer}>
                 {selectedTracks.map((track) => (
                   <div className={styles.mempoolItem} key={track.id}>
@@ -601,7 +607,7 @@ export default function Home() {
 
               
               </div>
-
+              
               <div className={styles.mempoolButtons}>
                   <input 
                     type="text"
