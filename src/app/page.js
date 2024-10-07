@@ -312,7 +312,7 @@ console.log("actual grid class", gridClass)
     // trackOffset
     // gridClass
 
-    setBlockMined(true)
+    // setBlockMined(true)
     // setBlockMined(false)
     set(chainStartedRef, true); 
     // set(gridClassRef, gridClass); 
@@ -646,13 +646,6 @@ console.log("blocks.length + 1", blocks.length - 1)
 
 
       <div className={styles.sectionTwo}>
-        <p style={{
-                      // cursor: isHovered  ? 'auto' : 'pointer',
-                      marginLeft:'auto',
-                      marginRight:'auto',
-                      position: 'relative',
-                      color: '#fff',
-                    }}>{blockMined == true && blocks?.length < 20 ? "Refresca la página para minar más bloques :) " : "" }</p>
           <h2>2- Mempool </h2> 
             <div className={styles.mempoolContainer}>
               <div className={styles.mempoolBox}>
