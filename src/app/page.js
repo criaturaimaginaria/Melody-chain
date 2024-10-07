@@ -132,8 +132,8 @@ export default function Home() {
     }
     if (dbBlocks == 3) { 
       setTrackOffset(48);
-      setVisibleTracks(8)
-      setGridClass("tracksContainer2")
+      setVisibleTracks(16)
+      setGridClass("tracksContainer")
     }
     if (dbBlocks == 4) { 
       setTrackOffset(56);
@@ -224,9 +224,6 @@ export default function Home() {
 
   useEffect(() => {
     const gridClassRef= ref(database, 'gridClass');
-
-
-   
 
     set(gridClassRef, gridClass); 
 
