@@ -6,6 +6,7 @@ import { database } from '../../firebase.config'
 import { ref, set, push, get } from 'firebase/database';
 import { onValue } from 'firebase/database';
 import tracks from './tracks';
+import genesisTrack from './genesisTrack';
 import styles from './page.module.css'
 
 
@@ -14,12 +15,12 @@ export default function Home() {
   const [selectedTracks, setSelectedTracks] = useState([]);
   // const [blocks, setBlocks] = useState([]);
   //WITH GENESIS BLOCK
-  const [blocks, setBlocks] = useState([{ tracks: [tracks[0]], name: 'Bloque Génesis' }]);
+  const [blocks, setBlocks] = useState([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
   const [blockName, setBlockName] = useState('');
   const [playingBlock, setPlayingBlock] = useState(null); 
   const [playingTrack, setPlayingTrack] = useState(null); 
   const currentHowlRef = useRef(null);
-  const crossfadeDuration = 1;
+  const crossfadeDuration = 1.198;
   const [visibleTracks, setVisibleTracks] = useState(16); 
   const [blocksUntilHalving, setBlocksUntilHalving] = useState(4); 
   const [halvingMessage, setHalvingMessage] = useState("");
@@ -35,6 +36,8 @@ export default function Home() {
   const [previousChains, setPreviousChains] = useState([]);
   const [selectedChain, setSelectedChain] = useState(null);
   const [selectedBlocks, setSelectedBlocks] = useState([]);
+
+  const [playCount, setPlayCount] = useState(0); 
 
   useEffect(() => {
     const blocksRef = ref(database, 'blocks');
@@ -100,10 +103,9 @@ export default function Home() {
     });
   }, []);
 
-
   useEffect(() => {
     let dbBlocks = blocks?.length - 1
-
+console.log(dbBlocks, "dbBlocks")
     if (dbBlocks == 1 ) { 
       setTrackOffset(16);
       setVisibleTracks(16)
@@ -116,86 +118,86 @@ export default function Home() {
     }
     if (dbBlocks == 3) { 
       setTrackOffset(48);
-      setVisibleTracks(16)
-      setGridClass("tracksContainer")
+      setVisibleTracks(8)
+      setGridClass("tracksContainer2")
     }
     if (dbBlocks == 4) { 
-      setTrackOffset(64);
+      setTrackOffset(56);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
     if (dbBlocks == 5 ) { 
-      setTrackOffset(72);
+      setTrackOffset(64);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
     if (dbBlocks == 6 )  { 
-      setTrackOffset(80);
+      setTrackOffset(72);
       setVisibleTracks(8)
       setGridClass("tracksContainer2")
     }
     if (dbBlocks == 7) { 
-      setTrackOffset(88);
-      setVisibleTracks(8)
-      setGridClass("tracksContainer2")
+      setTrackOffset(80);
+      setVisibleTracks(4)
+      setGridClass("tracksContainer3")
     }
     if (dbBlocks == 8) { 
-      setTrackOffset(96);
+      setTrackOffset(84);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
     if (dbBlocks == 9 ) { 
-      setTrackOffset(100);
+      setTrackOffset(88);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
     if (dbBlocks == 10 )  { 
-      setTrackOffset(104);
+      setTrackOffset(92);
       setVisibleTracks(4)
       setGridClass("tracksContainer3")
     }
     if (dbBlocks == 11) { 
-      setTrackOffset(108);
-      setVisibleTracks(4)
-      setGridClass("tracksContainer3")
+      setTrackOffset(96);
+      setVisibleTracks(2)
+      setGridClass("tracksContainer4")
     }
     if (dbBlocks == 12) { 
-      setTrackOffset(112);
+      setTrackOffset(98);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
     if (dbBlocks == 13) { 
-      setTrackOffset(114);
+      setTrackOffset(100);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
     if (dbBlocks == 14) { 
-      setTrackOffset(116);
+      setTrackOffset(102);
       setVisibleTracks(2)
       setGridClass("tracksContainer4")
     }
     if (dbBlocks == 15) { 
-      setTrackOffset(118);
-      setVisibleTracks(2)
-      setGridClass("tracksContainer4")
+      setTrackOffset(104);
+      setVisibleTracks(1)
+      setGridClass("tckCont5")
     }
     if (dbBlocks == 16) { 
-      setTrackOffset(120);
+      setTrackOffset(105);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
     if (dbBlocks == 17) { 
-      setTrackOffset(120);
+      setTrackOffset(106);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
     if (dbBlocks == 18) { 
-      setTrackOffset(121);
+      setTrackOffset(107);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
     if (dbBlocks == 19) { 
-      setTrackOffset(122);
+      setTrackOffset(108);
       setVisibleTracks(1)
       setGridClass("tckCont5")
     }
@@ -206,15 +208,28 @@ export default function Home() {
   
 
   const getTrackGroup = (trackId) => {
-    if (trackId <= 64) {
+    // if (trackId <= 64) {
+    //   return Math.floor((trackId - 1) / 4); 
+    // } else if (trackId >= 65 && trackId <= 96) {
+    //   return Math.floor((trackId - 1) / 2); 
+    // } else if (trackId >= 97 && trackId <= 112) {
+    //   return Math.floor((trackId - 1) / 2); 
+    // } else if (trackId >= 113 && trackId <= 120) {
+    //   return Math.floor((trackId - 1) / 1); 
+    // } else if (trackId >= 121) {
+    //   return Math.floor((trackId - 1) / 1); 
+    // }
+    // return -1;
+
+    if (trackId <= 48) {
       return Math.floor((trackId - 1) / 4); 
-    } else if (trackId >= 65 && trackId <= 96) {
+    } else if (trackId >= 49 && trackId <= 80) {
       return Math.floor((trackId - 1) / 2); 
-    } else if (trackId >= 97 && trackId <= 112) {
-      return Math.floor((trackId - 1) / 2); 
-    } else if (trackId >= 113 && trackId <= 120) {
+    } else if (trackId >= 81 && trackId <= 96) {
       return Math.floor((trackId - 1) / 1); 
-    } else if (trackId >= 121) {
+    } else if (trackId >= 97 && trackId <= 104) {
+      return Math.floor((trackId - 1) / 2); 
+    } else if (trackId >= 105) {
       return Math.floor((trackId - 1) / 1); 
     }
     return -1;
@@ -266,7 +281,8 @@ export default function Home() {
 
   const createBlock = async() => {
     const chainStartedRef = ref(database, 'chainStarted');
-    setBlockMined(true)
+    // setBlockMined(true)
+    setBlockMined(false)
     set(chainStartedRef, true); // Establece 'chainStarted' en true
     
     if (selectedTracks.length > 0) {
@@ -282,7 +298,7 @@ export default function Home() {
     });
     
     if (!blocksData) {
-      const genesisBlock = { tracks: [tracks[0]], name: 'Bloque Génesis' };
+      const genesisBlock = { tracks: [genesisTrack[0]], name: 'Bloque Génesis' };
       push(blocksRef, genesisBlock);
     }
 
@@ -362,15 +378,25 @@ export default function Home() {
 
 
 
-
   const playBlocksSequentiallyWithEvents = (blocks) => {
+ 
+    setPlayCount(prevCount => prevCount + 1);  // Incrementar el contador y actualizar el estado
+    console.log("Function executed times:", playCount);
+
+    console.log("block ??", blocks)
     let blockIndex = 0;
     if (blocks.length === 0) return;
-  
+
+
     const playNextBlock = () => {
+
       if (blockIndex < blocks.length) {
         const block = blocks[blockIndex];
-        stopAllSounds(); 
+        // comment this gives a smooth transition but....
+        // stopAllSounds(); 
+        if(playCount == 0){
+          stopAllSounds(); 
+        }
   
         const howls = block.tracks.map((track) => new Howl({
           src: [track.src],
@@ -379,6 +405,8 @@ export default function Home() {
             console.log(`Track ${track.id} from block ${block.name} ended`);
           }
         }));
+
+ 
   
 
   
@@ -392,18 +420,18 @@ export default function Home() {
   
     blockTimeoutRef.current = setTimeout(() => {
       if (blockIndex < blocks.length - 1) {
-        blockIndex++;
+        blockIndex++; 
         playNextBlock();
       } else {
         setTimeout(stopAllSounds, longestDuration * 1000);
       }
     }, fadeTime);
 
-
+    console.log("block final next block", blocks)
     
   }
 };
-
+console.log("final play function", blocks)
     stopAllSounds();
     clearTimeout(blockTimeoutRef.current);
     playNextBlock();
@@ -469,12 +497,12 @@ export default function Home() {
         await set(gameStateRef, null);
         await set(chainStartedRef, null);
   
-        setBlocks([{ tracks: [tracks[0]], name: 'Bloque Génesis' }]);
+        setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
 
       } else {
         console.log("No hay bloques para respaldar.");
       }
-      setBlocks([{ tracks: [tracks[0]], name: 'Bloque Génesis' }]);
+      setBlocks([{ tracks: [genesisTrack[0]], name: 'Bloque Génesis' }]);
       setVisibleTracks(16)
       setTrackOffset(16)
       setGridClass("tracksContainer")
