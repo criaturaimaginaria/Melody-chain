@@ -1379,7 +1379,7 @@ opacity: 0.8;
   flex-direction:column;
   margin-bottom: min(1.5vw, 1.5em);
   padding-bottom: min(2vw, 2em);
-  border-bottom: 1px solid #fff;
+  border-bottom: 0px solid #fff;
 }
 
 .sectionFour h2{
