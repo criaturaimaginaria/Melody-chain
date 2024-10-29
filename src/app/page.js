@@ -586,11 +586,11 @@ console.log("blocks.length + 1", blocks.length - 1)
         <div className={styles.introText}>
           <p><span>₿</span>itcoin, brindando una mayor libertad, permitió que muchas personas se empoderaran. Por
           eso, aunque la música suele ser un acto pasivo para el espectador, mi obra busca ofrecerle un poco más de 
-          libertad, invitándolo a participar ejerciendo su <strong><em>proof of taste</em></strong> para confrimar
+          libertad, invitándolo a participar ejerciendo su <strong><em>proof of taste</em></strong> para confirmar
           un bloque. Esto provocará que, aunque la música de los fragmentos haya sido 
           compuesta por mí, la armonía, el contrapunto y el encadenamiento de los paisajes sonoros propuestos sea 
           encadenado colectivamente por aquellas personas que hayan participado. A excepción, claro, de los últimos
-          bloques, donde la música es más es escasa producto de los halvings.
+          bloques, donde la música es más escasa producto de los halvings.
           </p>
         </div>
 
